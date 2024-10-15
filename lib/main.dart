@@ -12,6 +12,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
+// This is for web
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
@@ -28,6 +30,24 @@ void main() async {
     await Firebase.initializeApp();
   }
   runApp(const AmazonClone());
+}
+
+//This is for emulator
+void main() async {
+  //hello
+    WidgetsFlutterBinding.ensureInitialized();
+    Platform.isAndroid?
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+             apiKey: "AIzaSyDp_Y8yGtw_F8Vp4o3xTlsEPhW7LqToioA",
+                  authDomain: "clone-cb58f.firebaseapp.com",
+                  projectId: "clone-cb58f",
+                  storageBucket: "clone-cb58f.appspot.com",
+                  messagingSenderId: "637941856879",
+                  appId: "1:637941856879:web:5aa135c3c7be31ccafeb9a",
+   )
+   : await Firebase.initializeApp();
+    runApp(const AmazonClone());
 }
 
 class AmazonClone extends StatelessWidget {
